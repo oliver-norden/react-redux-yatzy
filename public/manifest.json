@@ -1,0 +1,8 @@
+{
+  "short_name": "Reacy-Redux-Yatzy",
+  "name": "Reacy-Redux-Yatzy",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
