@@ -18,6 +18,16 @@ class Dice extends Component {
                 id: 'dice3',
                 saved: false,
                 val: 0
+            },
+            {
+                id: 'dice4',
+                saved: false,
+                val: 0
+            },
+            {
+                id: 'dice5',
+                saved: false,
+                val: 0
             }
         ]
     }
@@ -48,15 +58,13 @@ class Dice extends Component {
     render() {
         return (
             <div>
-                <label htmlFor='dice1'>{this.state.dice[0].val}</label>
-                <input type='checkbox' id='dice1' onChange={this.toggleDice}/>
-                <br />
-                <label htmlFor='dice2'>{this.state.dice[1].val}</label>
-                <input type='checkbox' id='dice2' onChange={this.toggleDice}/>
-                <br />
-                <label htmlFor='dice3'>{this.state.dice[2].val}</label>
-                <input type='checkbox' id='dice3' onChange={this.toggleDice}/>
-                <br />
+                {this.state.dice.map(dice => 
+                    <div key={dice.id}>
+                        <label htmlFor={dice.id}>{dice.val}</label>
+                        <input type='checkbox' id={dice.id} onChange={this.toggleDice}/>
+                        <br />
+                    </div>
+                )}
                 <button onClick={this.roll}>Roll</button>
             </div>
         )
