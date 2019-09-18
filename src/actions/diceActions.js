@@ -1,4 +1,5 @@
 import { ROLL_DICE, TOGGLE_DICE } from './types';
+import { calcPossibleScores } from './scoreActions';
 
 export const rollDice = () => (dispatch, getState) => {
     function diceRoll() {
@@ -14,6 +15,8 @@ export const rollDice = () => (dispatch, getState) => {
         type: ROLL_DICE,
         payload: newDice
     });
+
+    dispatch(calcPossibleScores());
 }
 
 export const toggleDice = e => (dispatch, getState) => {
