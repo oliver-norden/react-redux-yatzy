@@ -34,9 +34,28 @@ export const calcPossibleScores = () => (dispatch, getState) => {
             score: 50
         }
     ];
+    const specials = [
+        {
+            name: 'small straight',
+            criteria: [1, 2, 3, 4, 5],
+            score: 15
+        },
+        {
+            name: 'large straight',
+            criteria: [2, 3, 4, 5, 6],
+            score: 20
+        }
+    ];
+
+    // Check for specials (Straights etc)
+    for (const special of specials) {
+        const { name, criteria, score } = special;
+
+        if (criteria.every(reqVal => dice.includes(reqVal))) possibleScores[name] = score // If all criterial dice are rolled
+    }
 
     // Fill possible scores object
-    for (let dice in diceCounts) {
+    for (const dice in diceCounts) {
 
         // Singels (ones, twos, etc)
         possibleScores[dice] = dice * diceCounts[dice];
