@@ -5,10 +5,12 @@ export const rollsPerPlayer = 3;
 const initialState = {
     players: [
         {
-            name: 'Oliver'
+            name: 'Oliver',
+            id: 0
         },
         {
-            name: 'Pat'
+            name: 'Pat',
+            id: 1
         }
     ],
     currentPlayer: {

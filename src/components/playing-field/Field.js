@@ -23,18 +23,9 @@ class Field extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <FieldRow players={players} header='Ones:' />
-                    <tr>
-                        <th>
-                            Ones:
-                        </th>
-                        <td>
-                            {posScore['1'] ? posScore['1'] : 0}
-                        </td>
-                        <td>
-                            {posScore['1'] ? posScore['1'] : 0}
-                        </td>
-                    </tr>
+                    <FieldRow players={players} header='Ones:' score='1' />
+                    <FieldRow players={players} header='Twos:' score='2' />
+                    <FieldRow players={players} header='Threes:' score='3' />
                 </tbody>
             </table>
         )
