@@ -63,7 +63,7 @@ export const calcPossibleScores = () => (dispatch, getState) => {
     // Check for combinations (Pairs, full house etc)
     for (const combination of combinations) {
         const { criteria, name, score } = combination;
-        criteria.sort(); // The most dice should priorotize the highest value
+        criteria.sort(); // The most dice should priorotize the highest value, i.e pick value first
         let validDice = [];
         let diceSum = 0;
         
