@@ -39,13 +39,11 @@ export const calcPossibleScores = () => (dispatch, getState) => {
         },
         {
             name: 'small straight',
-            values: [1, 2, 3, 4, 5],
-            score: 15
+            values: [1, 2, 3, 4, 5]
         },
         {
             name: 'large straight',
-            values: [2, 3, 4, 5, 6],
-            score: 20
+            values: [2, 3, 4, 5, 6]
         }
 
     ]
@@ -55,7 +53,7 @@ export const calcPossibleScores = () => (dispatch, getState) => {
         const { valueCounts, values, name, score } = combination;
 
         if (values) { // If exact values are required, for example, in a straight
-            if (values.every(reqVal => dice.includes(reqVal))) possibleScores[name] = score // If all criterial dice are rolled
+            if (values.every(reqVal => dice.includes(reqVal))) possibleScores[name] = score || arraySum(values) // If all criterial dice are rolled
         }
 
         else { // If exact values are NOT required, for example, in a four of a kind
