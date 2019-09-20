@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import FieldRow from './FieldRow';
 
 class Field extends Component {
     render() {
@@ -22,6 +23,7 @@ class Field extends Component {
                     </tr>
                 </thead>
                 <tbody>
+                    <FieldRow players={players} header='Ones:' />
                     <tr>
                         <th>
                             Ones:
