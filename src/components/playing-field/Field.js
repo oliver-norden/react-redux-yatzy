@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 class Field extends Component {
     render() {
-        const { posScore } = this.props;
+        const { posScore, players } = this.props;
         console.log(posScore);
+        console.log(players);
         return (
             <table>
                 <thead>
@@ -13,10 +14,10 @@ class Field extends Component {
                             Player:
                         </th>
                         <th>
-                            Player 1
+                            {players[0].name}
                         </th>
                         <th>
-                            Player 2
+                            {players[1].name}
                         </th>
                     </tr>
                 </thead>
@@ -39,7 +40,8 @@ class Field extends Component {
 }
 
 const mapStateToProps = state => ({
-    posScore: state.score.possibleScores
+    posScore: state.score.possibleScores,
+    players: state.game.players
 });
 
 export default connect(mapStateToProps, {})(Field);
