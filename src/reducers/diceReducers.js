@@ -26,6 +26,11 @@ const initialState = {
             id: 'dice5',
             saved: false,
             val: 0
+        },
+        {
+            id: 'dice6',
+            saved: false,
+            val: 0
         }
     ]
 };
