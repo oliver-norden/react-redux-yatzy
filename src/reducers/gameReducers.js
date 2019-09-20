@@ -6,11 +6,19 @@ const initialState = {
     players: [
         {
             name: 'Oliver',
-            id: 0
+            id: 0,
+            score: {
+                sum: 0,
+                bonus: 0
+            }
         },
         {
             name: 'Pat',
-            id: 1
+            id: 1,
+            score: {
+                sum: 0,
+                bonus: 0
+            }
         }
     ],
     currentPlayer: {
