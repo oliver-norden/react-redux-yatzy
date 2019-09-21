@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import diceReducers from './diceReducers';
-import scoreReducers from './scoreReducers';
+import possibleScoreReducers from './possibleScoreReducers';
 import gameReducers from './gameReducers';
 
 export default combineReducers({
     dice: diceReducers,
-    score: scoreReducers,
+    possibleScore: possibleScoreReducers,
     game: gameReducers
 });

@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { saveScore } from '../../actions/scoreActions';
 
 class FieldRow extends Component {
 
     getCell = playerId => {
+
+        // Return table cell with possible score for current player
         if (playerId === this.props.curPlayerIdx) {
-            return this.props.posScore[this.props.score];
+            const posScoreVal = this.props.posScore[this.props.score];
+            const scoreObj = {[this.props.score]: posScoreVal}
+            return (
+                <td onClick={
+                    this.props.saveScore.bind(this, scoreObj, playerId)
+                }>
+                    {posScoreVal}
+                </td>
+            );
         }
-        else return null;
+        else return (
+            <td></td>
+        );
     }
 
     render() {
@@ -16,7 +29,9 @@ class FieldRow extends Component {
             <tr>
                 <th>{header}</th>
                 {players.map(player => 
-                    <td key={player.name}>{this.getCell(player.id)}</td>
+                    <React.Fragment key={player.id}>
+                        {this.getCell(player.id)}
+                    </React.Fragment>
                 )}
             </tr>
         )
@@ -24,8 +39,8 @@ class FieldRow extends Component {
 }
 
 const mapStateToProps = state => ({
-    posScore: state.score.possibleScores,
+    posScore: state.possibleScore.possibleScores,
     curPlayerIdx: state.game.currentPlayer.idx
 });
 
-export default connect(mapStateToProps, {})(FieldRow);
+export default connect(mapStateToProps, { saveScore })(FieldRow);

@@ -1,4 +1,5 @@
-import { CALC_POSSIBLE_SCORES } from './types';
+import { CALC_POSSIBLE_SCORES, SAVE_SCORE } from './types';
+import { cyclePlayers } from './gameActions'
 
 export const calcPossibleScores = () => (dispatch, getState) => {
 
@@ -90,6 +91,22 @@ export const calcPossibleScores = () => (dispatch, getState) => {
         type: CALC_POSSIBLE_SCORES,
         payload: possibleScores
     });
+}
+
+export const saveScore = (newScore, player) => (dispatch, getState) => {
+
+    const players = getState().game.players;
+    players[player].score = {
+        ...players[player].score,
+        ...newScore
+    };
+
+    dispatch ({
+        type: SAVE_SCORE,
+        payload: players
+    });
+
+    dispatch (cyclePlayers());
 }
 
 function arraySum(arr) {

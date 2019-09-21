@@ -1,5 +1,6 @@
 export const ROLL_DICE = 'ROLL_DICE';
 export const TOGGLE_DICE = 'TOGGLE_DICE';
 export const CALC_POSSIBLE_SCORES = 'CALC_POSSIBLE_SCORES';
+export const SAVE_SCORE = 'SAVE_SCORE';
 export const CYCLE_PLAYERS = 'CYCLE_PLAYERS';
 export const CONSUME_DICE_ROLL = 'CONSUME_DICE_ROLL';

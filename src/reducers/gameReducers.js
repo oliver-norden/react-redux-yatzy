@@ -1,4 +1,4 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL } from "../actions/types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, SAVE_SCORE } from "../actions/types";
 
 export const rollsPerPlayer = 3;
 
@@ -44,6 +44,11 @@ export default function (state = initialState, action) {
                     ...state.currentPlayer,
                     rollsLeft: action.payload
                 }
+            }
+        case SAVE_SCORE:
+            return {
+                ...state,
+                players: action.payload
             }
         default: 
             return state;

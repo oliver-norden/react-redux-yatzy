@@ -43,7 +43,7 @@ class Field extends Component {
 }
 
 const mapStateToProps = state => ({
-    posScore: state.score.possibleScores,
+    posScore: state.possibleScore.possibleScores,
     players: state.game.players
 });
 
