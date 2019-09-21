@@ -27,6 +27,8 @@ class Field extends Component {
                     <FieldRow players={players} header='Fours:' score='4' />
                     <FieldRow players={players} header='Fives:' score='5' />
                     <FieldRow players={players} header='Sixes:' score='6' />
+                    <FieldRow players={players} header='Sum:' type='singlesSum' />
+                    <FieldRow players={players} header='Bonus:' score='bonus' />
                     <FieldRow players={players} header='1 pair:' score='one pair' />
                     <FieldRow players={players} header='2 pairs:' score='two pairs' />
                     <FieldRow players={players} header='Three of a kind:' score='threeOfAKind' />
@@ -36,7 +38,7 @@ class Field extends Component {
                     <FieldRow players={players} header='Full house:' score='full house' />
                     <FieldRow players={players} header='Chance:' score='chance' />
                     <FieldRow players={players} header='Yatzy:' score='yatzy' />
-                    <FieldRow players={players} header='Sum:' type='sum' />
+                    <FieldRow players={players} header='Sum:' type='scoreSum' />
                 </tbody>
             </table>
         )

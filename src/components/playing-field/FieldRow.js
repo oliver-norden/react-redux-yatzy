@@ -10,10 +10,10 @@ class FieldRow extends Component {
         const rowScoreType = this.props.score;
         const player = this.props.players[playerId];
 
-        // Return sum if row is a sum row
-        if (this.props.type === 'sum') {
+        // Return special row if row has a type
+        if (this.props.type) {
             return (
-                <td>{player.scoreSum}</td>
+                <td>{player[this.props.type]}</td>
             )
         }
 

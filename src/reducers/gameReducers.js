@@ -10,6 +10,7 @@ const initialState = {
             score: {
                 bonus: 0
             },
+            singlesSum: 0,
             scoreSum: 0,
         },
         {
@@ -18,6 +19,7 @@ const initialState = {
             score: {
                 bonus: 0
             },
+            singlesSum: 0,
             scoreSum: 0,
         }
     ],
