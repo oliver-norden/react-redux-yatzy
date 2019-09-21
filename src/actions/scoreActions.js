@@ -94,7 +94,7 @@ export const calcPossibleScores = () => (dispatch, getState) => {
 }
 
 export const saveScore = (newScore, player) => (dispatch, getState) => {
-
+    console.log(newScore)
     const players = getState().game.players;
     players[player].score = {
         ...players[player].score,

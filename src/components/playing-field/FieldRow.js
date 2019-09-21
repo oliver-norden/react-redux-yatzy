@@ -11,7 +11,7 @@ class FieldRow extends Component {
         const player = this.props.players[playerId];
 
         // Return table cell with saved score
-        if (player.score[rowScoreType]){
+        if (!isNaN(player.score[rowScoreType])){
             return (
                 <td>{player.score[rowScoreType]}</td>
             )
@@ -19,7 +19,7 @@ class FieldRow extends Component {
 
         // Return table cell with possible score for current player
         if (playerId === currentPlayerIdx) {
-            const posScoreVal = this.props.posScore[rowScoreType];            
+            const posScoreVal = this.props.posScore[rowScoreType] || 0;            
             const scoreObj = {[rowScoreType]: posScoreVal}
 
             return (
