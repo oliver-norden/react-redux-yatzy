@@ -4,6 +4,10 @@ import { rollDice, toggleDice } from '../actions/diceActions';
 
 class Dice extends Component {
 
+    componentDidMount() {
+        this.props.rollDice();
+    }
+
     toggleDice = e => {
         this.props.toggleDice(e);
     }
