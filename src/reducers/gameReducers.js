@@ -8,17 +8,17 @@ const initialState = {
             name: 'Oliver',
             id: 0,
             score: {
-                sum: 0,
                 bonus: 0
-            }
+            },
+            scoreSum: 0,
         },
         {
             name: 'Pat',
             id: 1,
             score: {
-                sum: 0,
                 bonus: 0
-            }
+            },
+            scoreSum: 0,
         }
     ],
     currentPlayer: {

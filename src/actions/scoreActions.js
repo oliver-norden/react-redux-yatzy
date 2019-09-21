@@ -94,11 +94,25 @@ export const calcPossibleScores = () => (dispatch, getState) => {
 }
 
 export const saveScore = (newScore, player) => (dispatch, getState) => {
+
     const players = getState().game.players;
-    players[player].score = {
-        ...players[player].score,
+    let playerScore = players[player].score;
+
+    // Add new score to score object
+    playerScore = {
+        ...playerScore,
         ...newScore
     };
+
+    // Calculate new sum
+    let sum = 0;
+    for (const scoreType in playerScore) {
+        sum += playerScore[scoreType];
+    }
+
+    // Add sum and score to player
+    players[player].score = playerScore;
+    players[player].sum = sum;
 
     dispatch ({
         type: SAVE_SCORE,
