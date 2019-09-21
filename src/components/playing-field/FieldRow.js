@@ -23,9 +23,13 @@ class FieldRow extends Component {
             const scoreObj = {[rowScoreType]: posScoreVal}
 
             return (
-                <td onClick={
-                    this.props.saveScore.bind(this, scoreObj, playerId)
-                }>
+                <td
+                    onClick={this.props.saveScore.bind(this, scoreObj, playerId)}
+                    style={{
+                        color: '#aaa',
+                        cursor: 'pointer'
+                    }}
+                >
                     {posScoreVal}
                 </td>
             );
