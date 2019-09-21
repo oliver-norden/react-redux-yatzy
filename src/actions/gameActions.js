@@ -1,6 +1,6 @@
 import { CYCLE_PLAYERS, CONSUME_DICE_ROLL } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
-import { disableRollButton } from "./diceActions";
+import { disableRollButton, enableRollButton } from "./diceActions";
 
 export const cyclePlayers = () => (dispatch, getState) => {
     const players = getState().game.players.length;
@@ -14,6 +14,8 @@ export const cyclePlayers = () => (dispatch, getState) => {
             rollsLeft: rollsPerPlayer
         }
     });
+
+    dispatch(enableRollButton());
 }
 
 export const consumeDiceRoll = () => (dispatch, getState) => {
