@@ -1,4 +1,4 @@
-import { ROLL_DICE, TOGGLE_DICE, ENABLE_ROLL_BTN, DISABLE_ROLL_BTN } from '../actions/types';
+import { ROLL_DICE, TOGGLE_DICE, UNSAVE_DICE, ENABLE_ROLL_BTN, DISABLE_ROLL_BTN } from '../actions/types';
 
 const initialState = {
     dice: [
@@ -40,6 +40,7 @@ export default function (state = initialState, action){
     switch(action.type){
         case ROLL_DICE:
         case TOGGLE_DICE:
+        case UNSAVE_DICE:
             return {...state, dice: action.payload};
         case ENABLE_ROLL_BTN:
         case DISABLE_ROLL_BTN:

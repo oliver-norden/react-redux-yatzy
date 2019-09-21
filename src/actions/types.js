@@ -1,5 +1,6 @@
 export const ROLL_DICE = 'ROLL_DICE';
 export const TOGGLE_DICE = 'TOGGLE_DICE';
+export const UNSAVE_DICE = 'UNSAVE_DICE';
 export const ENABLE_ROLL_BTN = 'ENABLE_ROLL_BTN';
 export const DISABLE_ROLL_BTN = 'DISABLE_ROLL_BTN';
 export const CALC_POSSIBLE_SCORES = 'CALC_POSSIBLE_SCORES';
