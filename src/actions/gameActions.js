@@ -1,5 +1,6 @@
 import { CYCLE_PLAYERS, CONSUME_DICE_ROLL } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
+import { disableRollButton } from "./diceActions";
 
 export const cyclePlayers = () => (dispatch, getState) => {
     const players = getState().game.players.length;
@@ -17,12 +18,14 @@ export const cyclePlayers = () => (dispatch, getState) => {
 
 export const consumeDiceRoll = () => (dispatch, getState) => {
     const currentRollsLeft = getState().game.currentPlayer.rollsLeft;
-    if (currentRollsLeft > 1) {
-        const newRollsLeft = currentRollsLeft - 1;
-        dispatch({
-            type: CONSUME_DICE_ROLL,
-            payload: newRollsLeft
-        })
-    }
-    else dispatch(cyclePlayers());
+    const newRollsLeft = currentRollsLeft - 1;
+
+    // Disable roll button if there are no rolls left
+    if (newRollsLeft === 0) dispatch(disableRollButton());
+
+    dispatch ({
+        type: CONSUME_DICE_ROLL,
+        payload: newRollsLeft
+    })
+    
 }
