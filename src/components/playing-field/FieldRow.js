@@ -6,10 +6,22 @@ class FieldRow extends Component {
 
     getCell = playerId => {
 
+        const currentPlayerIdx = this.props.curPlayerIdx;
+        const rowScoreType = this.props.score;
+        const player = this.props.players[playerId];
+
+        // Return table cell with saved score
+        if (player.score[rowScoreType]){
+            return (
+                <td>{player.score[rowScoreType]}</td>
+            )
+        }
+
         // Return table cell with possible score for current player
-        if (playerId === this.props.curPlayerIdx) {
-            const posScoreVal = this.props.posScore[this.props.score];
-            const scoreObj = {[this.props.score]: posScoreVal}
+        if (playerId === currentPlayerIdx) {
+            const posScoreVal = this.props.posScore[rowScoreType];            
+            const scoreObj = {[rowScoreType]: posScoreVal}
+
             return (
                 <td onClick={
                     this.props.saveScore.bind(this, scoreObj, playerId)
@@ -40,6 +52,7 @@ class FieldRow extends Component {
 
 const mapStateToProps = state => ({
     posScore: state.possibleScore.possibleScores,
+    players: state.game.players,
     curPlayerIdx: state.game.currentPlayer.idx
 });
 
