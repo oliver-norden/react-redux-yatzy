@@ -21,7 +21,7 @@ class Dice extends Component {
                 {this.props.dice.map(dice => 
                     <div key={dice.id}>
                         <label htmlFor={dice.id}>{dice.val}</label>
-                        <input type='checkbox' id={dice.id} onChange={this.toggleDice}/>
+                        <input type='checkbox' checked={dice.saved} id={dice.id} onChange={this.toggleDice}/>
                         <br />
                     </div>
                 )}
