@@ -1,4 +1,4 @@
-import { ROLL_DICE, TOGGLE_DICE } from '../actions/types';
+import { ROLL_DICE, TOGGLE_DICE, ENABLE_ROLL_BTN, DISABLE_ROLL_BTN } from '../actions/types';
 
 const initialState = {
     dice: [
@@ -32,7 +32,8 @@ const initialState = {
             saved: false,
             val: 0
         }
-    ]
+    ],
+    enabled: true
 };
 
 export default function (state = initialState, action){
@@ -40,6 +41,12 @@ export default function (state = initialState, action){
         case ROLL_DICE:
         case TOGGLE_DICE:
             return {...state, dice: action.payload};
+        case ENABLE_ROLL_BTN:
+        case DISABLE_ROLL_BTN:
+            return {
+                ...state,
+                enabled: action.payload
+            }
         default:
             return state;
     }

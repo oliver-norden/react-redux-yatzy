@@ -1,4 +1,4 @@
-import { ROLL_DICE, TOGGLE_DICE } from './types';
+import { ROLL_DICE, TOGGLE_DICE, DISABLE_ROLL_BTN, ENABLE_ROLL_BTN } from './types';
 import { calcPossibleScores } from './scoreActions';
 import { consumeDiceRoll } from './gameActions';
 
@@ -19,7 +19,7 @@ export const rollDice = () => (dispatch, getState) => {
 
     dispatch (consumeDiceRoll());
 
-    dispatch(calcPossibleScores());
+    dispatch (calcPossibleScores());
 }
 
 export const toggleDice = e => (dispatch, getState) => {
@@ -32,4 +32,18 @@ export const toggleDice = e => (dispatch, getState) => {
         type: TOGGLE_DICE,
         payload: newDice
     });
+}
+
+export const disableRollButton = () => {
+    return ({
+        type: DISABLE_ROLL_BTN,
+        payload: false
+    })
+}
+
+export const enableRollButton = () => {
+    return ({
+        type: ENABLE_ROLL_BTN,
+        payload: true
+    })
 }

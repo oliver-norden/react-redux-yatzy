@@ -25,7 +25,7 @@ class Dice extends Component {
                         <br />
                     </div>
                 )}
-                <button onClick={this.roll}>Roll</button>
+                <button disabled={!this.props.rollBtnEnabled} onClick={this.roll}>Roll</button>
             </div>
         )
     }
@@ -33,6 +33,7 @@ class Dice extends Component {
 
 const mapStateToProps = state => ({
     dice: state.dice.dice,
+    rollBtnEnabled: state.dice.enabled,
     curPlayer: state.game.currentPlayer,
     players: state.game.players
 });
