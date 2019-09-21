@@ -10,6 +10,13 @@ class FieldRow extends Component {
         const rowScoreType = this.props.score;
         const player = this.props.players[playerId];
 
+        // Return sum if row is a sum row
+        if (this.props.type === 'sum') {
+            return (
+                <td>{player.scoreSum}</td>
+            )
+        }
+
         // Return table cell with saved score
         if (!isNaN(player.score[rowScoreType])){
             return (

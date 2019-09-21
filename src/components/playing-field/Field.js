@@ -36,6 +36,7 @@ class Field extends Component {
                     <FieldRow players={players} header='Full house:' score='full house' />
                     <FieldRow players={players} header='Chance:' score='chance' />
                     <FieldRow players={players} header='Yatzy:' score='yatzy' />
+                    <FieldRow players={players} header='Sum:' type='sum' />
                 </tbody>
             </table>
         )

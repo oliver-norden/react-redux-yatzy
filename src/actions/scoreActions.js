@@ -112,7 +112,7 @@ export const saveScore = (newScore, player) => (dispatch, getState) => {
 
     // Add sum and score to player
     players[player].score = playerScore;
-    players[player].sum = sum;
+    players[player].scoreSum = sum;
 
     dispatch ({
         type: SAVE_SCORE,
