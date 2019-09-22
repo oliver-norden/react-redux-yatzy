@@ -104,25 +104,21 @@ export const saveScore = (newScore, player) => (dispatch, getState) => {
         ...newScore
     };
 
-    // If new score is a single, add to singlesSum
     const scoreType = Object.keys(newScore)[0];
+
+    // If new score is a single, add to singlesSum
     if (scoreType > 0 && scoreType <= 6){
         players[player].singlesSum += newScore[scoreType];
-        
+
         // If singles sum are higher than 63, add bonus
         if (players[player].singlesSum >= 63) playerScore.bonus = 50;
     }
 
+    // Add new score to player sum
+    players[player].scoreSum += newScore[scoreType];
 
-    // Calculate new sum
-    let sum = 0;
-    for (const scoreType in playerScore) {
-        sum += playerScore[scoreType];
-    }
-
-    // Add sum and score to player
+    // Add sum and score object to player
     players[player].score = playerScore;
-    players[player].scoreSum = sum;
 
     dispatch ({
         type: SAVE_SCORE,
