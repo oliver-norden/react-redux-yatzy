@@ -4,7 +4,7 @@ import FieldRow from './FieldRow';
 
 class Field extends Component {
     render() {
-        const { posScore, players } = this.props;
+        const { posScore, players, rows } = this.props;
         return (
             <table>
                 <thead>
@@ -21,24 +21,15 @@ class Field extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <FieldRow players={players} header='Ones:' score='1' />
-                    <FieldRow players={players} header='Twos:' score='2' />
-                    <FieldRow players={players} header='Threes:' score='3' />
-                    <FieldRow players={players} header='Fours:' score='4' />
-                    <FieldRow players={players} header='Fives:' score='5' />
-                    <FieldRow players={players} header='Sixes:' score='6' />
-                    <FieldRow players={players} header='Sum:' type='singlesSum' />
-                    <FieldRow players={players} header='Bonus:' score='bonus' />
-                    <FieldRow players={players} header='1 pair:' score='one pair' />
-                    <FieldRow players={players} header='2 pairs:' score='two pairs' />
-                    <FieldRow players={players} header='Three of a kind:' score='threeOfAKind' />
-                    <FieldRow players={players} header='Four of a kind:' score='fourOfAKind' />
-                    <FieldRow players={players} header='Small straight:' score='small straight' />
-                    <FieldRow players={players} header='Large straight:' score='large straight' />
-                    <FieldRow players={players} header='Full house:' score='full house' />
-                    <FieldRow players={players} header='Chance:' score='chance' />
-                    <FieldRow players={players} header='Yatzy:' score='yatzy' />
-                    <FieldRow players={players} header='Sum:' type='scoreSum' />
+                    {rows.map(rowData =>
+                        <FieldRow 
+                            key={rowData.score || rowData.type}
+                            players={players} 
+                            header={rowData.header} 
+                            score={rowData.score} 
+                            type={rowData.type}
+                        />
+                    )}
                 </tbody>
             </table>
         )
@@ -47,7 +38,8 @@ class Field extends Component {
 
 const mapStateToProps = state => ({
     posScore: state.possibleScore.possibleScores,
-    players: state.game.players
+    players: state.game.players,
+    rows: state.rules.playingField
 });
 
 export default connect(mapStateToProps, {})(Field);
