@@ -60,6 +60,8 @@ export const calcPossibleScores = () => (dispatch, getState) => {
 }
 
 export const saveScore = (newScore, player) => (dispatch, getState) => {
+    
+    const { diceSides, bonus, bonusRequirment } = getState().rules;
 
     const players = getState().game.players;
     let playerScore = players[player].score;
@@ -73,11 +75,11 @@ export const saveScore = (newScore, player) => (dispatch, getState) => {
     const scoreType = Object.keys(newScore)[0];
 
     // If new score is a single, add to singlesSum
-    if (scoreType > 0 && scoreType <= 6){
+    if (scoreType > 0 && scoreType <= diceSides){
         players[player].singlesSum += newScore[scoreType];
 
         // If singles sum are higher than 63, add bonus
-        if (players[player].singlesSum >= 63) playerScore.bonus = 50;
+        if (players[player].singlesSum >= bonusRequirment) playerScore.bonus = bonus;
     }
 
     // Add new score to player sum
