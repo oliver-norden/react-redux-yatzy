@@ -3,8 +3,9 @@ import { calcPossibleScores } from './scoreActions';
 import { consumeDiceRoll } from './gameActions';
 
 export const rollDice = () => (dispatch, getState) => {
+    const diceSides = getState().rules.diceSides;
     function diceRoll() {
-        return Math.floor(Math.random() * 6 ) + 1;
+        return Math.floor(Math.random() * diceSides ) + 1;
     } 
 
     const newDice = getState().dice.dice.map(dice => {
