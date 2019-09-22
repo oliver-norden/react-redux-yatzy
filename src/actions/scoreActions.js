@@ -12,42 +12,8 @@ export const calcPossibleScores = () => (dispatch, getState) => {
     const diceCounts = {};
     dice.forEach(dice => (diceCounts[dice]) ? diceCounts[dice]++ : diceCounts[dice] = 1);
 
-    const combinations = [
-        {
-            name: 'one pair',
-            valueCounts: [2]
-        },
-        {
-            name: 'threeOfAKind',
-            valueCounts: [3]
-        },
-        {
-            name: 'fourOfAKind',
-            valueCounts: [4]
-        },
-        {
-            name: 'two pairs',
-            valueCounts: [2, 2]
-        },
-        {
-            name: 'full house',
-            valueCounts: [3, 2]
-        },
-        {
-            name: 'yatzy',
-            valueCounts: [5],
-            score: 50
-        },
-        {
-            name: 'small straight',
-            values: [1, 2, 3, 4, 5]
-        },
-        {
-            name: 'large straight',
-            values: [2, 3, 4, 5, 6]
-        }
-
-    ]
+    // Get criteria for combinations (straights, yatzy, pairs etc)
+    const combinations = getState().rules.combinations;
 
     // Check for combinations (Pairs, full house etc)
     for (const combination of combinations) {
