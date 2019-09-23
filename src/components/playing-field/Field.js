@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FieldRow from './FieldRow';
+import styles from './PlayingField.module.css';
 
 class Field extends Component {
 
@@ -16,14 +17,14 @@ class Field extends Component {
     render() {
         const { posScore, players, rows } = this.props;
         return (
-            <table>
+            <table className={styles.playingField}>
                 <thead>
                     <tr>
                         <th>
                             Player:
                         </th>
                         {players.map(player => 
-                            <th key={player.id}>
+                            <th key={player.id} className={styles.playerName}>
                                 {player.name}
                             </th>
                         )}
