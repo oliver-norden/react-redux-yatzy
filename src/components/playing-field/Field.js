@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import FieldRow from './FieldRow';
 
 class Field extends Component {
+
+    componentDidUpdate(prevProps){
+        const { winner } = this.props;
+        if (prevProps.winner !== this.props.winner){
+            if (this.props.winner){
+                alert(`The winner is ${winner.name} with ${winner.scoreSum} points.`);
+            }
+        }
+    }
+
     render() {
         const { posScore, players, rows } = this.props;
         return (
@@ -39,7 +49,8 @@ class Field extends Component {
 const mapStateToProps = state => ({
     posScore: state.possibleScore.possibleScores,
     players: state.game.players,
-    rows: state.rules.playingField
+    rows: state.rules.playingField,
+    winner: state.game.winner
 });
 
 export default connect(mapStateToProps, {})(Field);
