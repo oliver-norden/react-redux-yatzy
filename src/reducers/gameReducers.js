@@ -1,4 +1,4 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, SAVE_SCORE, CONSUME_TURN } from "../actions/types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, SAVE_SCORE, CONSUME_TURN, SET_WINNER } from "../actions/types";
 
 export const rollsPerPlayer = 3;
 
@@ -23,6 +23,7 @@ const initialState = {
             scoreSum: 0,
         }
     ],
+    winner: null,
     currentPlayer: {
         idx: 0,
         rollsLeft: rollsPerPlayer
@@ -52,6 +53,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 players: action.payload
+            }
+        case SET_WINNER:
+            return {
+                ...state,
+                winner: action.payload
             }
         case CONSUME_TURN:
             return {

@@ -1,4 +1,4 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN } from "./types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN, SET_WINNER } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
 import { disableRollButton, enableRollButton, unsaveAllDice, rollDice } from "./diceActions";
 
@@ -34,7 +34,11 @@ export const cyclePlayers = () => (dispatch, getState) => {
 export const regWinner = () => (dispatch, getState) => {
     const players = getState().game.players;
     const winner = players.reduce((player, highetsScorePlayer) => (!highetsScorePlayer || player.scoreSum > highetsScorePlayer.scoreSum) ?  player : highetsScorePlayer ) // Compare player score with current highest score player
-    console.log(winner.name);
+
+    dispatch({
+        type: SET_WINNER,
+        payload: winner
+    });
 }
 
 export const consumeTurn = () => {
