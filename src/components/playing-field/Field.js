@@ -15,9 +15,20 @@ class Field extends Component {
     }
 
     render() {
-        const { posScore, players, rows } = this.props;
+        const { posScore, players, rows, curPlayerIdx } = this.props;
         return (
             <table className={styles.playingField}>
+                <colgroup>
+                    <col />
+                    {players.map(player => {
+                        return (
+                            <col 
+                                key={player.id}
+                                className={ (player.id === curPlayerIdx) ? styles.currentPlayer : null }
+                            />
+                        )
+                    })}
+                </colgroup>
                 <thead>
                     <tr>
                         <th>
@@ -50,7 +61,8 @@ const mapStateToProps = state => ({
     posScore: state.possibleScore.possibleScores,
     players: state.game.players,
     rows: state.rules.playingField,
-    winner: state.game.winner
+    winner: state.game.winner,
+    curPlayerIdx: state.game.currentPlayer.idx
 });
 
 export default connect(mapStateToProps, {})(Field);

@@ -22,7 +22,7 @@ class Dice extends Component {
         const { players, curPlayer } = this.props;
         return (
             <div>
-                <p>Current Player: {players[curPlayer.idx].name}, {curPlayer.rollsLeft} rolls left</p>
+                <p>{curPlayer.rollsLeft} rolls left</p>
                 {this.props.dice.map(dice => 
                     <div key={dice.id}>
                         <label htmlFor={dice.id}>{dice.val}</label>
