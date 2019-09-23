@@ -13,7 +13,7 @@ export const cyclePlayers = () => (dispatch, getState) => {
         const currentTurn = getState().game.currentTurn;
         const totalTurns = getState().rules.turns;
 
-        if (currentTurn > totalTurns) alert("End");
+        if (currentTurn > totalTurns) dispatch(regWinner());
     }
 
     dispatch({
@@ -29,6 +29,12 @@ export const cyclePlayers = () => (dispatch, getState) => {
     dispatch(unsaveAllDice());
 
     dispatch(rollDice());
+}
+
+export const regWinner = () => (dispatch, getState) => {
+    const players = getState().game.players;
+    const winner = players.reduce((player, highetsScorePlayer) => (!highetsScorePlayer || player.scoreSum > highetsScorePlayer.scoreSum) ?  player : highetsScorePlayer ) // Compare player score with current highest score player
+    console.log(winner.name);
 }
 
 export const consumeTurn = () => {
