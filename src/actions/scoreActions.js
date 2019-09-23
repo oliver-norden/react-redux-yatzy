@@ -24,7 +24,7 @@ export const calcPossibleScores = () => (dispatch, getState) => {
         }
 
         else { // If exact values are NOT required, for example, in a four of a kind
-            valueCounts.sort(); // The most dice should priorotize the highest value, i.e pick value first
+            valueCounts.sort().reverse(); // The most dice should priorotize the highest value, i.e pick value first
             let validDice = [];
             let diceSum = 0;
             
@@ -39,7 +39,6 @@ export const calcPossibleScores = () => (dispatch, getState) => {
                     validDice.push(highestValidDice);
                 }
             }
-    
             if (validDice.length === valueCounts.length) possibleScores[name] = score || diceSum; // If length of valid dice and criteria array are equal, all critera are met
         }
     };
