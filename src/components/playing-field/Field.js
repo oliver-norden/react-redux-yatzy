@@ -22,12 +22,11 @@ class Field extends Component {
                         <th>
                             Player:
                         </th>
-                        <th>
-                            {players[0].name}
-                        </th>
-                        <th>
-                            {players[1].name}
-                        </th>
+                        {players.map(player => 
+                            <th key={player.id}>
+                                {player.name}
+                            </th>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
