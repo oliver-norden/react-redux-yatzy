@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { rollDice, toggleDice, genDice } from '../actions/diceActions';
-import diceSVG from './Dice.module.css';
+import styles from './Dice.module.css';
 
 class Dice extends Component {
 
@@ -26,13 +26,19 @@ class Dice extends Component {
                 <p>{curPlayer.rollsLeft} rolls left</p>
                 {this.props.dice.map(dice => 
                     <div key={dice.id}>
-                        <label htmlFor={dice.id}>
+                        <input 
+                            type='checkbox' 
+                            checked={dice.saved} 
+                            id={dice.id} 
+                            onChange={this.toggleDice}
+                            className={styles.diceCheckbox}
+                        />
+                        <label htmlFor={dice.id} className={styles.diceLabel}>
                             <span
-                                className={ `${diceSVG.dice} ${diceSVG[`dice-${dice.val}`]}` }
+                                className={ `${styles.dice} ${styles[`dice-${dice.val}`]}` }
                                 title={`Dice ${dice.val}`}>
                             </span>
                         </label>
-                        <input type='checkbox' checked={dice.saved} id={dice.id} onChange={this.toggleDice}/>
                         <br />
                     </div>
                 )}

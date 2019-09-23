@@ -1,3 +1,16 @@
+input:checked + label.diceLabel span{
+    border-radius: 33%;
+    box-shadow: 0 0 4px 2px gray;
+}
+
+label.diceLabel{
+    cursor: pointer;
+}
+
+input.diceCheckbox{
+    display: none;
+}
+
 /*
  * Dice.css v1.0
  * Code - MIT License - https://github.com/diafygi/dice-css
