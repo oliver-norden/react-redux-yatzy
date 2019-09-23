@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { rollDice, toggleDice } from '../actions/diceActions';
+import { rollDice, toggleDice, genDice } from '../actions/diceActions';
 
 class Dice extends Component {
 
     componentDidMount() {
+        this.props.genDice(this.props.noOfDice);
         this.props.rollDice();
     }
 
@@ -39,7 +40,8 @@ const mapStateToProps = state => ({
     dice: state.dice.dice,
     rollBtnEnabled: state.dice.enabled,
     curPlayer: state.game.currentPlayer,
-    players: state.game.players
+    players: state.game.players,
+    noOfDice: state.rules.dice
 });
 
-export default connect(mapStateToProps, { rollDice, toggleDice })(Dice)
+export default connect(mapStateToProps, { rollDice, toggleDice, genDice })(Dice)

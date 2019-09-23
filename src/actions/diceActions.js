@@ -1,4 +1,4 @@
-import { ROLL_DICE, TOGGLE_DICE, DISABLE_ROLL_BTN, ENABLE_ROLL_BTN, UNSAVE_DICE } from './types';
+import { ROLL_DICE, TOGGLE_DICE, DISABLE_ROLL_BTN, ENABLE_ROLL_BTN, UNSAVE_DICE, GEN_DICE } from './types';
 import { calcPossibleScores } from './scoreActions';
 import { consumeDiceRoll } from './gameActions';
 
@@ -21,6 +21,21 @@ export const rollDice = () => (dispatch, getState) => {
     dispatch (consumeDiceRoll());
 
     dispatch (calcPossibleScores());
+}
+
+export const genDice = noOfDice => dispatch => {
+    let dice = [];
+    for (let i = 1; i <= noOfDice; i++){
+        dice.push({
+            id: `dice${i}`,
+            val: 0,
+            saved: false
+        });
+    }
+    dispatch({
+        type: GEN_DICE,
+        payload: dice
+    });
 }
 
 export const toggleDice = e => (dispatch, getState) => {

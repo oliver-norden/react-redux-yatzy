@@ -1,38 +1,7 @@
-import { ROLL_DICE, TOGGLE_DICE, UNSAVE_DICE, ENABLE_ROLL_BTN, DISABLE_ROLL_BTN } from '../actions/types';
+import { ROLL_DICE, TOGGLE_DICE, UNSAVE_DICE, ENABLE_ROLL_BTN, DISABLE_ROLL_BTN, GEN_DICE } from '../actions/types';
 
 const initialState = {
-    dice: [
-        {
-            id: 'dice1',
-            saved: false,
-            val: 0
-        },
-        {
-            id: 'dice2',
-            saved: false,
-            val: 0
-        },
-        {
-            id: 'dice3',
-            saved: false,
-            val: 0
-        },
-        {
-            id: 'dice4',
-            saved: false,
-            val: 0
-        },
-        {
-            id: 'dice5',
-            saved: false,
-            val: 0
-        },
-        {
-            id: 'dice6',
-            saved: false,
-            val: 0
-        }
-    ],
+    dice: [],
     enabled: true
 };
 
@@ -47,6 +16,11 @@ export default function (state = initialState, action){
             return {
                 ...state,
                 enabled: action.payload
+            }
+        case GEN_DICE:
+            return {
+                ...state,
+                dice: [...action.payload]
             }
         default:
             return state;
