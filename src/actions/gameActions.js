@@ -1,4 +1,4 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL } from "./types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
 import { disableRollButton, enableRollButton, unsaveAllDice, rollDice } from "./diceActions";
 
@@ -6,6 +6,15 @@ export const cyclePlayers = () => (dispatch, getState) => {
     const players = getState().game.players.length;
     const currentPlayerIdx = getState().game.currentPlayer.idx;
     const newPlayerIdx = (currentPlayerIdx === players - 1) ? 0 : currentPlayerIdx + 1;
+
+    if (newPlayerIdx === 0) { // A full turn has been completed
+        dispatch(consumeTurn());
+
+        const currentTurn = getState().game.currentTurn;
+        const totalTurns = getState().rules.turns;
+
+        if (currentTurn > totalTurns) alert("End");
+    }
 
     dispatch({
         type: CYCLE_PLAYERS,
@@ -20,6 +29,12 @@ export const cyclePlayers = () => (dispatch, getState) => {
     dispatch(unsaveAllDice());
 
     dispatch(rollDice());
+}
+
+export const consumeTurn = () => {
+    return {
+        type: CONSUME_TURN
+    }
 }
 
 export const consumeDiceRoll = () => (dispatch, getState) => {
