@@ -1,1 +1,3 @@
-# react-redux-yatzy
+# React + Redux Yatzy
+
+[Hosted version](https://yatzy.olivernorden.se)
