@@ -26,7 +26,8 @@ const initialState = {
     winner: null,
     currentPlayer: {
         idx: 0,
-        rollsLeft: rollsPerPlayer
+        rollsLeft: rollsPerPlayer,
+        message: 'Select the dice you wish to save and hit roll, or click on a score to register it'
     },
     currentTurn: 1
 }
@@ -53,6 +54,14 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 players: action.payload
+            }
+        case SET_INSTRUCTION:
+            return {
+                ...state,
+                currentPlayer: {
+                    ...state.currentPlayer,
+                    message: action.payload
+                }
             }
         case SET_WINNER:
             return {

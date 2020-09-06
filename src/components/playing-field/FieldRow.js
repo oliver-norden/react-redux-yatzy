@@ -50,7 +50,7 @@ class FieldRow extends Component {
         const { players, header } = this.props;
         return (
             <tr>
-                <th>{header}</th>
+                <th>{`${header}:`}</th>
                 {players.map(player => 
                     <React.Fragment key={player.id}>
                         {this.getCell(player.id)}

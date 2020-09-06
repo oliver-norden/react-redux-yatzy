@@ -1,0 +1,25 @@
+.playingField{
+    border-collapse: collapse;
+}
+
+.playingField td, .playingField th{
+    border: 1px solid black;
+    padding: 4px;
+}
+
+.playingField td{
+    text-align: center;
+}
+
+.playingField th{
+    text-align: left;
+}
+
+.playingField th.playerName{
+    text-align: center;
+    width: 60px;
+}
+
+col.currentPlayer{
+    background-color: #ddd;
+}

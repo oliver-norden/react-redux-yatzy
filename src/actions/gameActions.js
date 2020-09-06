@@ -1,6 +1,12 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN, SET_WINNER } from "./types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN, SET_WINNER, SET_INSTRUCTION } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
 import { disableRollButton, enableRollButton, unsaveAllDice, rollDice } from "./diceActions";
+
+const instructions = {
+    rollsLeft: 'Select the dice you wish to save and hit roll, or click on a score to register it',
+    endOfTurn: 'Click on a score to register it',
+    endOfGame: ''
+}
 
 export const cyclePlayers = () => (dispatch, getState) => {
     const players = getState().game.players.length;
@@ -16,6 +22,10 @@ export const cyclePlayers = () => (dispatch, getState) => {
         if (currentTurn > totalTurns) dispatch(regWinner());
     }
 
+    dispatch({
+        type: SET_INSTRUCTION,
+        payload: instructions.rollsLeft
+    });
     dispatch({
         type: CYCLE_PLAYERS,
         payload: {
@@ -36,6 +46,10 @@ export const regWinner = () => (dispatch, getState) => {
     const winner = players.reduce((player, highetsScorePlayer) => (!highetsScorePlayer || player.scoreSum > highetsScorePlayer.scoreSum) ?  player : highetsScorePlayer ) // Compare player score with current highest score player
 
     dispatch({
+        type: SET_INSTRUCTION,
+        payload: instructions.endOfGame
+    });
+    dispatch({
         type: SET_WINNER,
         payload: winner
     });
@@ -52,7 +66,13 @@ export const consumeDiceRoll = () => (dispatch, getState) => {
     const newRollsLeft = currentRollsLeft - 1;
 
     // Disable roll button if there are no rolls left
-    if (newRollsLeft === 0) dispatch(disableRollButton());
+    if (newRollsLeft === 0) {
+        dispatch({
+            type: SET_INSTRUCTION,
+            payload: instructions.endOfTurn
+        });
+        dispatch(disableRollButton())
+    };
 
     dispatch ({
         type: CONSUME_DICE_ROLL,

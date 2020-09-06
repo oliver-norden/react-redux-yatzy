@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FieldRow from './FieldRow';
+import styles from './PlayingField.module.css';
 
 class Field extends Component {
 
@@ -14,16 +15,27 @@ class Field extends Component {
     }
 
     render() {
-        const { posScore, players, rows } = this.props;
+        const { posScore, players, rows, curPlayerIdx } = this.props;
         return (
-            <table>
+            <table className={styles.playingField}>
+                <colgroup>
+                    <col />
+                    {players.map(player => {
+                        return (
+                            <col 
+                                key={player.id}
+                                className={ (player.id === curPlayerIdx) ? styles.currentPlayer : null }
+                            />
+                        )
+                    })}
+                </colgroup>
                 <thead>
                     <tr>
                         <th>
                             Player:
                         </th>
                         {players.map(player => 
-                            <th key={player.id}>
+                            <th key={player.id} className={styles.playerName}>
                                 {player.name}
                             </th>
                         )}
@@ -49,7 +61,8 @@ const mapStateToProps = state => ({
     posScore: state.possibleScore.possibleScores,
     players: state.game.players,
     rows: state.rules.playingField,
-    winner: state.game.winner
+    winner: state.game.winner,
+    curPlayerIdx: state.game.currentPlayer.idx
 });
 
 export default connect(mapStateToProps, {})(Field);
