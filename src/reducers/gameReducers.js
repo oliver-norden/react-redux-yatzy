@@ -1,28 +1,30 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, SAVE_SCORE, CONSUME_TURN, SET_WINNER } from "../actions/types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, SAVE_SCORE, CONSUME_TURN, SET_WINNER, SET_INSTRUCTION, RESET_GAME } from "../actions/types";
 
 export const rollsPerPlayer = 3;
 
-const initialState = {
-    players: [
-        {
-            name: 'Oliver',
-            id: 0,
-            score: {
-                bonus: 0
-            },
-            singlesSum: 0,
-            scoreSum: 0,
+const initialPlayers = [
+    {
+        name: 'Player 1',
+        id: 0,
+        score: {
+            bonus: 0
         },
-        {
-            name: 'Pat',
-            id: 1,
-            score: {
-                bonus: 0
-            },
-            singlesSum: 0,
-            scoreSum: 0,
-        }
-    ],
+        singlesSum: 0,
+        scoreSum: 0,
+    },
+    {
+        name: 'Player 2',
+        id: 1,
+        score: {
+            bonus: 0
+        },
+        singlesSum: 0,
+        scoreSum: 0,
+    }
+];
+
+const initialState = {
+    players: initialPlayers.map(a => ({...a})),
     winner: null,
     currentPlayer: {
         idx: 0,
@@ -67,6 +69,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 winner: action.payload
+            }
+        case RESET_GAME:
+            return {
+                ...initialState,
+                players: initialPlayers.map(a => ({...a}))
             }
         case CONSUME_TURN:
             return {

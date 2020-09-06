@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FieldRow from './FieldRow';
 import styles from './PlayingField.module.css';
+import { resetGame } from '../../actions/gameActions'
 
 class Field extends Component {
 
@@ -10,6 +11,7 @@ class Field extends Component {
         if (prevProps.winner !== this.props.winner){
             if (this.props.winner){
                 alert(`The winner is ${winner.name} with ${winner.scoreSum} points.`);
+                this.props.resetGame();
             }
         }
     }
@@ -65,4 +67,4 @@ const mapStateToProps = state => ({
     curPlayerIdx: state.game.currentPlayer.idx
 });
 
-export default connect(mapStateToProps, {})(Field);
+export default connect(mapStateToProps, { resetGame })(Field);

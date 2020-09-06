@@ -1,3 +1,5 @@
+import { RESET_GAME } from '../actions/types'
+
 const playingField = [
     {header: 'Ones', score: '1', user: true},
     {header: 'Twos', score: '2', user: true},
@@ -68,6 +70,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case RESET_GAME:
+            return {
+                ...state,
+                playingField: playingField
+            }
         default: 
             return state;
     }

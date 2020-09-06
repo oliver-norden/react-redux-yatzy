@@ -1,4 +1,4 @@
-import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN, SET_WINNER, SET_INSTRUCTION } from "./types";
+import { CYCLE_PLAYERS, CONSUME_DICE_ROLL, CONSUME_TURN, SET_WINNER, SET_INSTRUCTION, RESET_GAME } from "./types";
 import { rollsPerPlayer } from '../reducers/gameReducers';
 import { disableRollButton, enableRollButton, unsaveAllDice, rollDice } from "./diceActions";
 
@@ -53,6 +53,13 @@ export const regWinner = () => (dispatch, getState) => {
         type: SET_WINNER,
         payload: winner
     });
+}
+
+export const resetGame = () => (dispatch) => {
+    dispatch({
+        type: RESET_GAME
+    });
+    dispatch(consumeDiceRoll());
 }
 
 export const consumeTurn = () => {

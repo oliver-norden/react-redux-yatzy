@@ -11,3 +11,4 @@ export const SET_WINNER = 'SET_WINNER';
 export const CONSUME_TURN = 'CONSUME_TURN';
 export const CONSUME_DICE_ROLL = 'CONSUME_DICE_ROLL';
 export const SET_INSTRUCTION = 'SET_INSTRUCTION';
+export const RESET_GAME = 'RESET_GAME';

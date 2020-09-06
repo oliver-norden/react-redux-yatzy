@@ -27,20 +27,11 @@ class Dice extends Component {
                 <p>{curPlayer.message}</p>
                 <div className={styles.diceContainer}>
                     {this.props.dice.map(dice => 
-                {this.props.dice.map(dice => 
-                    {this.props.dice.map(dice => 
                         <div key={dice.id}>
                             <input 
-                        <input 
-                            <input 
-                                type='checkbox' 
-                            type='checkbox' 
+                                disabled={!this.props.rollBtnEnabled}
                                 type='checkbox' 
                                 checked={dice.saved} 
-                            checked={dice.saved} 
-                                checked={dice.saved} 
-                                id={dice.id} 
-                            id={dice.id} 
                                 id={dice.id} 
                                 onChange={this.toggleDice}
                                 className={styles.diceCheckbox}
