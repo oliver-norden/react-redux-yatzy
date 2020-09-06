@@ -17,7 +17,7 @@ class Field extends Component {
     }
 
     render() {
-        const { posScore, players, rows, curPlayerIdx } = this.props;
+        const { players, rows, curPlayerIdx } = this.props;
         return (
             <table className={styles.playingField}>
                 <colgroup>

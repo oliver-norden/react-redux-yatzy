@@ -20,7 +20,7 @@ class Dice extends Component {
     }
 
     render() {
-        const { players, curPlayer } = this.props;
+        const { curPlayer } = this.props;
         return (
             <div>
                 <p>{curPlayer.rollsLeft} rolls left</p>
