@@ -24,6 +24,7 @@ class Dice extends Component {
         return (
             <div>
                 <p>{curPlayer.rollsLeft} rolls left</p>
+                <p>{curPlayer.message}</p>
                 <div className={styles.diceContainer}>
                     {this.props.dice.map(dice => 
                 {this.props.dice.map(dice => 
